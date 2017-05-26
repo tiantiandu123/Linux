@@ -1,7 +1,7 @@
-test:test.c
-	gcc test.c -o test -pthread
+cp:cp.c
+	gcc cp.c -o cp -pthread
 
 .PHONY:clean
 clean:
-	rm -f test
+	rm -f cp
 
