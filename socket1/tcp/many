@@ -1,0 +1,58 @@
+[?25l[J[J[J[?12l[?25h[?1049h[?1h=[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1HE325: ATTENTION
+Found a swap file by the name ".tcp_server.c.swp"
+[10Cowned by: root   dated: Tue Jun  5 02:36:11 2018
+[9Cfile name: /home/dutian/25class/socket/tcp/tcp_server.c
+[10Cmodified: no
+[9Cuser name: root   host name: localhost.localdomain
+[8Cprocess ID: 4389 (still running)
+While opening file "tcp_server.c"
+[13Cdated: Tue Jun  5 01:37:03 2018
+
+(1) Another program may be editing the same file.
+    If this is the case, be careful not to end up with two
+    different instances of the same file when making changes.
+    Quit, or continue with caution.
+
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r tcp_server.c"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".tcp_server.c.swp"
+    to avoid this message.
+
+Swap file ".tcp_server.c.swp" already exists!
+[O]pen Read-Only, (E)dit anyway, (R)ecover, (Q)uit, (A)bort:[?12l[?25h[24;1H[K[24;1H
+[?25l"tcp_server.c" [readonly] 66 lines, 1448 characters
+Press ENTER or type command to continue[1;1H[2L[1;1H#include<stdio.h>
+#include<sys/types.h>
+#include<sys/socket.h>[3;23H[K[4;1H#include<netinet/in.h>[4;23H[K[5;1H#include<string.h>[5;19H[K[6;1H#include<arpa/inet.h>[6;22H[K[7;1H#include<stdlib.h>[7;19H[K[8;1H//./tcp_server 127.0.0.1 8080[8;30H[K[9;1Hvoid service(int sock,char*ip,int port)
+{[10;14H[K[11;8H char buf[1024];
+        while(1){[12;18H[K[13;4H             buf[0]=0;[13;26H[K[14;4H             ssize_t s=read(sock,buf,sizeof(buf)-1);[14;56H[K[15;4H             if(s>0){[15;25H[K[16;24H buf[s]=0;
+                        printf("[%s:%d] say#%s\n",ip,port,buf);
+                        write(sock,buf,strlen(buf));[18;53H[K[19;4H             }[19;18H[K[20;4H             else if(s==0){//write fd closed[20;48H[K[21;4H                     pr[?1049h[?1h=[?12;25h[?12l[?25h[27m[m[H[2J[?25l[1;1H[33m 33 [m[15C [33mreturn[m [31m1[m;
+[33m 34 [m[7C }
+[33m 35 [m[7C [32mint[m sock=socket(AF_INET,SOCK_STREAM,[31m0[m);
+[33m 36 [m[7C [33mif[m(sock<[31m0[m){
+[33m 37 [m[15C perror([31m"socket"[m);
+[33m 38 [m[15C [33mreturn[m [31m2[m;
+[33m 39 [m[7C }
+[33m 40 [m[7C [30m[43mstruct sockaddr[m_in local;
+[33m 41 [m[7C local.sin_family=AF_INET;
+[33m 42 [m[7C local.sin_addr.s_addr=inet_addr(argv[[31m1[m]);
+[33m 43 [m[7C local.sin_port=htons(atoi(argv[[31m2[m]));
+[33m 44 [m[7C [33mif[m(bind(sock,([30m[43mstruct sockaddr[m*)&local,[33msizeof[m(local))<[31m0[m){
+[33m 45 [m[15C printf([31m"bind error[m[35m\n[m[31m"[m);
+[33m 46 [m[15C [33mreturn[m [31m3[m;
+[33m 47 [m[7C }
+[33m 48 [m[7C [33mif[m(listen(sock,[31m5[m)<[31m0[m){[34m//listen sock[m
+[33m 49 [m[15C perror([31m"listen"[m);
+[33m 50 [m[15C [33mreturn[m [31m4[m;
+[33m 51 [m[7C }
+[33m 52 [m[7C [30m[43mstruct sockaddr[m_in peer;
+[33m 53 [m[7C [33mwhile[m([31m1[m){
+[33m 54 [m[15C socklen_t len=[33msizeof[m(peer);
+[33m 55 [m[15C [32mint[m client_sock=accept(sock,([30m[43mstruct sockaddr[m*)&peer,&len);[24;63H49,3-17[7C74%[17;21H[?12l[?25h[24;63H[K[24;1H
+[32mW11: Warning: File "tcp_server.c" has changed since editing started[m
+[32mSee ":help W11" for more info.[m
+[32m[O]K, (L)oad File: [m[?1l>[?1049lVim: Caught deadly signal TERM
+Vim: Finished.
+[24;1H
